@@ -269,13 +269,6 @@ function circuit_type_DeleteFcn(hObject, eventdata, handles)
 
 % --- Executes during object creation, after setting all properties.
 function circuit_type_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to circuit_type (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
 
-
-% --- Executes during object creation, after setting all properties.
 function R_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to R (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+
