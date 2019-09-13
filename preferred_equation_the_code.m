@@ -6,3 +6,4 @@ global y;
 global eqn;
 f = fit(t',y',char(eqn(idx)));
 plot(f,t,y);
+%madarchod
