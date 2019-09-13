@@ -66,8 +66,8 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 R=str2num(get(handles.edit8,'String'))
 get_selected2=get(handles.uibuttongroup2,'SelectedObject');
 ser_par=get(get_selected2,'String')
-function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
 
+function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
 
 function popupmenu4_Callback(hObject, eventdata, handles)
 contents=cellstr(get(hObject,'String'));
