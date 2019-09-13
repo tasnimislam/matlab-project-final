@@ -78,6 +78,7 @@ global t;
 global y;
 global eqn;
 f = fit(t',y',char(eqn(idx)));
+axes(handles.axes1);
 plot(f,t,y);
 
     
