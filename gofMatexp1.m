@@ -66,7 +66,6 @@ end
 function pushbutton8_Callback(hObject, eventdata, handles)
 
 
-
 function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
 
 
@@ -223,10 +222,7 @@ function radiobutton19_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function uipanel3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to uipanel3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+
 
 
 % --- Executes during object creation, after setting all properties.
@@ -234,3 +230,18 @@ function uibuttongroup5_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to uibuttongroup5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes when selected object is changed in uibuttongroup5.
+function uibuttongroup5_SelectionChangedFcn(hObject, eventdata, handles)
+% hObject    handle to the selected object in uibuttongroup5 
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+selected_equation=get(get(handles.uibuttongroup5,'SelectedObject'),'String');
+if selected_equation=='1'
+   set(handles.checkbox3,'Enable','Off');
+   set(handles.checkbox2,'Enable','Off');  
+else
+    set(handles.checkbox4,'Enable','Off');
+   set(handles.checkbox1,'Enable','Off'); 
+end
