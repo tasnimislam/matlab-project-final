@@ -77,10 +77,14 @@ end
 
 function pushbutton8_Callback(hObject, eventdata, handles)
 selected_circuit_type=get(get(handles.circuit_type,'SelectedObject'),'String');
-R=str2num(get(handles.edit8,'String'));
+Res=str2num(get(handles.edit8,'String'));
 global f;
 global idx;
-[L,C] = findlc_manami(f,idx,R,selected_circuit_type)
+[L,C] = findlc_manami(f,idx,Res,selected_circuit_type)
+set(handles.R,'String',Res);
+set(handles.L,'String',L);
+set(handles.C,'String',C);
+
 
 
 function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
@@ -266,5 +270,12 @@ function circuit_type_DeleteFcn(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function circuit_type_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to circuit_type (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes during object creation, after setting all properties.
+function R_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to R (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
