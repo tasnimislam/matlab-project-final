@@ -67,19 +67,20 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 % R=str2num(get(handles.edit8,'String'));
 get_selectedRLC=get(handles.uibuttongroup2,'SelectedObject');
 ser_par=get(get_selectedRLC,'String')
-% 
-% global x;
-% 
-% if ser_par=='Series'
-%     x=1
-% %     axes(handles.axes3);
-% %      imshow('RLC series.jpg');
-% 
+
+global x;
+
+if ser_par=='Series'
+    x=1
+    axes(handles.axes3);
+     imshow('RLC series.jpg');
+end
+
 % if ser_par=='Parallel'
 %     global x
-% %     x=5
-% %     axes(handles.axes3);
-% %    imshow('RLC parallel.jpg');
+%     x=5
+%     axes(handles.axes3);
+%    imshow('RLC parallel.jpg');
 % end
 
 % % get_selectedLC=get(handles.uibuttongroup4,'SelectedObject');
@@ -107,8 +108,6 @@ f = fit(t',y',char(eqn(idx)));
 axes(handles.axes1);
 plot(f,t,y);
 
-    
-
 function popupmenu4_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
@@ -116,7 +115,7 @@ end
 
 
 % --- Executes during object creation, after setting all properties.
-function uibuttongroup3_CreateFcn(hObject, eventdata, handles)
+function uibuttongroup3_CreateFcn(~, eventdata, handles)
 % hObject    handle to uibuttongroup3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
