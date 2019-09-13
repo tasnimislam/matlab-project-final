@@ -64,54 +64,11 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 function pushbutton8_Callback(hObject, eventdata, handles)
-% R=str2num(get(handles.edit8,'String'));
-get_selectedRLC=get(handles.uibuttongroup2,'SelectedObject');
-ser_par=get(get_selectedRLC,'String')
 
-global x;
 
-if ser_par=='Series'
-    x=1
-    axes(handles.axes3);
-     imshow('RLC series.jpg');
-end
-
-% if ser_par=='Parallel'
-%     global x
-%     x=5
-%     axes(handles.axes3);
-%    imshow('RLC parallel.jpg');
-% end
-
-% % get_selectedLC=get(handles.uibuttongroup4,'SelectedObject');
-% % L_C=get(get_selectedLC,'String')
-% 
-% if L_C=='RL'
-%      imshow('RL.JPG');
-% else
-%     imshow('RC.JPG');
-% end
-% 
-% % imshow('RC.jpg');
 
 function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
 
-function popupmenu4_Callback(hObject, eventdata, handles)
-contents=cellstr(get(hObject,'String'));
-pop_choice=contents(get(hObject,'Value'));
-pop_choice=string(pop_choice);
-idx=str2num(pop_choice)
-global t;
-global y;
-global eqn;
-f = fit(t',y',char(eqn(idx)));
-axes(handles.axes1);
-plot(f,t,y);
-
-function popupmenu4_CreateFcn(hObject, eventdata, handles)
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
 
 
 % --- Executes during object creation, after setting all properties.
@@ -177,5 +134,103 @@ function pushbutton10_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function uibuttongroup4_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to uibuttongroup4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes on button press in checkbox1.
+function checkbox1_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox1
+
+
+% --- Executes on button press in checkbox2.
+function checkbox2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox2
+
+
+% --- Executes on button press in checkbox3.
+function checkbox3_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox3
+
+
+% --- Executes on button press in checkbox4.
+function checkbox4_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox4
+
+
+% --- Executes on button press in pushbutton12.
+function pushbutton12_Callback(hObject, eventdata, handles)
+selected_equation=get(get(handles.uibuttongroup5,'SelectedObject'),'String');
+idx=str2num(selected_equation);
+global t;
+global y;
+global eqn;
+f = fit(t',y',char(eqn(idx)));
+axes(handles.axes1);
+plot(f,t,y);
+
+
+% --- Executes on button press in radiobutton16.
+function radiobutton16_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton16 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton16
+
+
+% --- Executes on button press in radiobutton17.
+function radiobutton17_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton17 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton17
+
+
+% --- Executes on button press in radiobutton18.
+function radiobutton18_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton18 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton18
+
+
+% --- Executes on button press in radiobutton19.
+function radiobutton19_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton19 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton19
+
+
+% --- Executes during object creation, after setting all properties.
+function uipanel3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to uipanel3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes during object creation, after setting all properties.
+function uibuttongroup5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to uibuttongroup5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
