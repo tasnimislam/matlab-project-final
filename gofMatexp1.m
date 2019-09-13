@@ -175,6 +175,4 @@ function pushbutton10_Callback(hObject, eventdata, handles)
 
 % --- Executes during object creation, after setting all properties.
 function uibuttongroup4_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to uibuttongroup4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+
