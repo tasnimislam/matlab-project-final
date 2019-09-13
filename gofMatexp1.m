@@ -26,6 +26,18 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 global gofMat_table
 set(handles.uitable1,'Data',gofMat_table);
 
+function pushbutton12_Callback(hObject, eventdata, handles)
+selected_equation=get(get(handles.uibuttongroup5,'SelectedObject'),'String');
+global idx;
+idx=str2num(selected_equation);
+global t;
+global y;
+global eqn;
+global f;
+f = fit(t',y',char(eqn(idx)));
+axes(handles.axes1);
+plot(f,t,y);
+
 function uitable1_CellEditCallback(hObject, eventdata, handles)
 
 function edit1_Callback(hObject, eventdata, handles)
@@ -64,6 +76,11 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 function pushbutton8_Callback(hObject, eventdata, handles)
+selected_circuit_type=get(get(handles.circuit_type,'SelectedObject'),'String');
+R=str2num(get(handles.edit8,'String'));
+global f;
+global idx;
+[L,C] = findlc_manami(f,idx,R,selected_circuit_type)
 
 
 function uibuttongroup2_CreateFcn(hObject, eventdata, handles)
@@ -174,15 +191,7 @@ function checkbox4_Callback(hObject, eventdata, handles)
 
 
 % --- Executes on button press in pushbutton12.
-function pushbutton12_Callback(hObject, eventdata, handles)
-selected_equation=get(get(handles.uibuttongroup5,'SelectedObject'),'String');
-idx=str2num(selected_equation);
-global t;
-global y;
-global eqn;
-f = fit(t',y',char(eqn(idx)));
-axes(handles.axes1);
-plot(f,t,y);
+
 
 
 % --- Executes on button press in radiobutton16.
@@ -239,9 +248,23 @@ function uibuttongroup5_SelectionChangedFcn(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 selected_equation=get(get(handles.uibuttongroup5,'SelectedObject'),'String');
 if selected_equation=='1'
-   set(handles.checkbox3,'Enable','Off');
-   set(handles.checkbox2,'Enable','Off');  
+   set(handles.RLCseries,'Enable','Off');
+   set(handles.RLCparallel,'Enable','Off');  
 else
-    set(handles.checkbox4,'Enable','Off');
-   set(handles.checkbox1,'Enable','Off'); 
+    set(handles.RL,'Enable','Off');
+   set(handles.RC,'Enable','Off'); 
 end
+
+
+% --- Executes during object deletion, before destroying properties.
+function circuit_type_DeleteFcn(hObject, eventdata, handles)
+% hObject    handle to circuit_type (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function circuit_type_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to circuit_type (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
