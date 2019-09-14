@@ -50,13 +50,13 @@ switch x
                 yt = ilaplace(fun*s*C);
         end
 end
-xt=vpa(simplify(rewrite(xt,'sincos'),'IgnoreAnalyticConstraints',true,'Steps',50),2);
+xt=vpa(simplify(xt,'IgnoreAnalyticConstraints',true,'Steps',50),2);
 subplot(2,1,1);
 fplot(xt,[0 tf],'r');
 line(xlim, [0 0]);
 xlabel('Time');
 ylabel('Vin');
-yt=vpa(simplify(rewrite(yt,'sincos'),'IgnoreAnalyticConstraints',true,'Steps',50),2);
+yt=vpa(simplify(yt,'IgnoreAnalyticConstraints',true,'Steps',50),2);
 subplot(2,1,2);
 fplot(yt,[0 tf],'g');
 line(xlim, [0 0]);
