@@ -1,4 +1,4 @@
-function yt=picture(xt,fun,R,L,C,x,tf,p)
+function picture(xt,fun,R,L,C,x,tf,p)
 syms t real;
 syms s;
 switch x
@@ -61,4 +61,14 @@ switch x
         end
 end
 xt=vpa(simplify(xt,'IgnoreAnalyticConstraints',true,'Steps',50),2);
+subplot(2,1,1);
+fplot(xt,[0 tf],'r');
+line(xlim, [0 0]);
+xlabel('Time');
+ylabel('Vin');
 yt=vpa(simplify(yt,'IgnoreAnalyticConstraints',true,'Steps',50),2);
+subplot(2,1,2);
+fplot(yt,[0 tf],'g');
+line(xlim, [0 0]);
+xlabel('Time');
+ylabel(p);
