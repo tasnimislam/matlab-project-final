@@ -221,7 +221,7 @@ tf_input=str2num(get(handles.finaltime,'String'));
 time_period=str2num(get(handles.timeperiod,'String'));
 global pop_choice;
 wanted_plot=pop_choice;
-[xt,fun,tf]=define_signal_new(xt_input,tf_input,var);
+[xt,fun,tf]=define_signal_new(xt_input,tf_input,var,time_period);
 global Res;
 global L;
 global C;
