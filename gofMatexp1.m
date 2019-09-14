@@ -138,26 +138,6 @@ pop_choice=contents(get(hObject,'Value'));
 pop_choice=string(pop_choice);
 
 function ok3_Callback(hObject, eventdata, handles)
-var=get(get(handles.circuit_type,'SelectedObject'),'String');
-xt_input=get(handles.inputsignal,'String');
-tf_input=get(handles.finaltime,'String');
-time_period=get(handles.timeperiod,'String');
-global pop_choice;
-wanted_plot=pop_choice;
-[xt,fun,tf]=define_signal_manami(xt_input,tf_input,var);
-global Res;
-global L;
-global C;
-global selected_circuit_type;
-yt=picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
-
-axes(handles.axes4);
-fplot(xt,[0 tf]);
-title('Input');
-
-axes(handles.axes5);
-fplot(yt,[0 tf]);
-title('Output');
 
 
 function uibuttongroup4_CreateFcn(hObject, eventdata, handles)
@@ -223,11 +203,6 @@ end
 
 % --- Executes when selected object is changed in signaltype.
 function signaltype_SelectionChangedFcn(hObject, eventdata, handles)
-var=get(get(handles.signaltype,'SelectedObject'),'String');
-if var=='Aperiodic/Triagonometric'
-    set(handles.text43,'Stirng','Madarchod');
-end
-
 
 
 function edit15_Callback(hObject, eventdata, handles)
@@ -254,6 +229,24 @@ end
 
 % --- Executes on button press in pushbutton15.
 function pushbutton15_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton15 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+var=get(get(handles.circuit_type,'SelectedObject'),'String');
+xt_input=get(handles.inputsignal,'String');
+tf_input=get(handles.finaltime,'String');
+time_period=get(handles.timeperiod,'String');
+global pop_choice;
+wanted_plot=pop_choice;
+[xt,fun,tf]=define_signal_manami(xt_input,tf_input,var);
+global Res;
+global L;
+global C;
+global selected_circuit_type;
+yt=picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
+
+axes(handles.axes4);
+fplot(xt,[0 tf]);
+title('Input');
+
+axes(handles.axes5);
+fplot(yt,[0 tf]);
+title('Output');
+
