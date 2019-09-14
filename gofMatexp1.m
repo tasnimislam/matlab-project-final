@@ -85,9 +85,15 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 function pushbutton8_Callback(hObject, eventdata, handles)
+global Res;
+global L;
+global C;
+global selected_circuit_type;
+
 selected_circuit_type=get(get(handles.circuit_type,'SelectedObject'),'String');
 Res=str2num(get(handles.edit8,'String'));
-global f;global idx;
+global f;
+global idx;
 [L,C] = findlc_manami(f,idx,Res,selected_circuit_type);
 set(handles.R,'String',Res);
 set(handles.L,'String',L);
@@ -133,18 +139,25 @@ pop_choice=string(pop_choice);
 
 function ok3_Callback(hObject, eventdata, handles)
 var=get(get(handles.circuit_type,'SelectedObject'),'String');
-xt_input=get(handles.inputsignal,'Stirng');
-tf_input=get(handles.finaltime,'Stirng');
-time_period=get(handles.timeperiod,'Stirng');
-t=tf_input-time_period:0.01:tf_input
+xt_input=get(handles.inputsignal,'String');
+tf_input=get(handles.finaltime,'String');
+time_period=get(handles.timeperiod,'String');
+global pop_choice;
 wanted_plot=pop_choice;
 [xt,fun,tf]=define_signal_manami(xt_input,tf_input,var);
+global Res;
+global L;
+global C;
+global selected_circuit_type;
+yt=picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
 
 axes(handles.axes4);
-plot(xt_input,t);
+fplot(xt,[0 tf]);
+title('Input');
 
 axes(handles.axes5);
-plot(output,t);
+fplot(yt,[0 tf]);
+title('Output');
 
 
 function uibuttongroup4_CreateFcn(hObject, eventdata, handles)
@@ -188,9 +201,9 @@ end
 
 
 
-function edit14_Callback(hObject, eventdata, handles)
+function timeperiod_Callback(hObject, eventdata, handles)
 
-function edit14_CreateFcn(hObject, eventdata, handles)
+function timeperiod_CreateFcn(hObject, eventdata, handles)
 
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
@@ -206,3 +219,41 @@ function popupmenu6_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes when selected object is changed in signaltype.
+function signaltype_SelectionChangedFcn(hObject, eventdata, handles)
+var=get(get(handles.signaltype,'SelectedObject'),'String');
+if var=='Aperiodic/Triagonometric'
+    set(handles.text43,'Stirng','Madarchod');
+end
+
+
+
+function edit15_Callback(hObject, eventdata, handles)
+% hObject    handle to edit15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit15 as text
+%        str2double(get(hObject,'String')) returns contents of edit15 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit15_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton15.
+function pushbutton15_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
