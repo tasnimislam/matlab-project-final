@@ -221,12 +221,12 @@ tf_input=str2num(get(handles.finaltime,'String'));
 time_period=str2num(get(handles.timeperiod,'String'));
 global pop_choice;
 wanted_plot=pop_choice;
-[xt,fun,tf]=define_signal_new(xt_input,tf_input,var)
+[xt,fun,tf]=define_signal_new(xt_input,tf_input,var);
 global Res;
 global L;
 global C;
 global selected_circuit_type;
-picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
+picture(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
 
 
 % --- Executes during object creation, after setting all properties.
