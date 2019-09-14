@@ -215,24 +215,22 @@ end
 
 
 function pushbutton15_Callback(hObject, eventdata, handles)
-var=get(get(handles.circuit_type,'SelectedObject'),'String');
+var=get(get(handles.signaltype,'SelectedObject'),'String');
 xt_input=get(handles.inputsignal,'String');
-tf_input=get(handles.finaltime,'String');
-time_period=get(handles.timeperiod,'String');
+tf_input=str2num(get(handles.finaltime,'String'));
+time_period=str2num(get(handles.timeperiod,'String'));
 global pop_choice;
 wanted_plot=pop_choice;
-[xt,fun,tf]=define_signal_manami(xt_input,tf_input,var);
+[xt,fun,tf]=define_signal_new(xt_input,tf_input,var)
 global Res;
 global L;
 global C;
 global selected_circuit_type;
-yt=picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
+picture_manami(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
 
-axes(handles.axes4);
-fplot(xt,[0 tf]);
-title('Input');
 
-axes(handles.axes5);
-fplot(yt,[0 tf]);
-title('Output');
-
+% --- Executes during object creation, after setting all properties.
+function signaltype_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to signaltype (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
