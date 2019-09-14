@@ -226,7 +226,18 @@ global Res;
 global L;
 global C;
 global selected_circuit_type;
-picture(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
+[xt_final yt_final]=picture(xt,fun,Res,L,C,selected_circuit_type,tf,wanted_plot);
+figure(2);
+fplot(xt_final,[0 tf],'r');
+line(xlim, [0 0]);
+xlabel('Time');
+ylabel('Vin');
+
+figure(3);
+fplot(yt_final,[0 tf],'g');
+line(xlim, [0 0]);
+xlabel('Time');
+ylabel(p);
 
 
 % --- Executes during object creation, after setting all properties.
